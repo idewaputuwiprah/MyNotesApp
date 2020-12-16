@@ -1,8 +1,8 @@
-package com.dicoding.mynotesapp.helper
+package com.dicoding.consumerapp.helper
 
 import android.database.Cursor
-import com.dicoding.mynotesapp.db.DatabaseContract
-import com.dicoding.mynotesapp.note.Note
+import com.dicoding.consumerapp.db.DatabaseContract
+import com.dicoding.consumerapp.note.Note
 
 object MappingHelper {
     fun mapCursorToArrayList(notesCursor: Cursor?): ArrayList<Note> {

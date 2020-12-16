@@ -1,7 +1,6 @@
-package com.dicoding.mynotesapp
+package com.dicoding.consumerapp
 
 import android.content.ContentValues
-import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,12 +9,11 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.dicoding.mynotesapp.db.DatabaseContract
-import com.dicoding.mynotesapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
-import com.dicoding.mynotesapp.db.DatabaseContract.NoteColumns.Companion.DATE
-import com.dicoding.mynotesapp.db.NoteHelper
-import com.dicoding.mynotesapp.helper.MappingHelper
-import com.dicoding.mynotesapp.note.Note
+import com.dicoding.consumerapp.db.DatabaseContract
+import com.dicoding.consumerapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
+import com.dicoding.consumerapp.db.DatabaseContract.NoteColumns.Companion.DATE
+import com.dicoding.consumerapp.helper.MappingHelper
+import com.dicoding.consumerapp.note.Note
 import kotlinx.android.synthetic.main.activity_note_add_update.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -24,7 +22,6 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
     private var isEdit = false
     private var note: Note? = null
     private var position: Int = 0
-    private lateinit var noteHelper: NoteHelper
     private lateinit var uriWithId: Uri
 
     companion object {
@@ -42,9 +39,6 @@ class NoteAddUpdateActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note_add_update)
-
-        noteHelper = NoteHelper.getInstance(applicationContext)
-        noteHelper.open()
 
         note = intent.getParcelableExtra(EXTRA_NOTE)
         if (note != null) {

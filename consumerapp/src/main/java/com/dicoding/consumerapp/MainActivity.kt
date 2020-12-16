@@ -1,6 +1,5 @@
-package com.dicoding.mynotesapp
+package com.dicoding.consumerapp
 
-import android.content.ContentResolver
 import android.content.Intent
 import android.database.ContentObserver
 import androidx.appcompat.app.AppCompatActivity
@@ -9,10 +8,9 @@ import android.os.Handler
 import android.os.HandlerThread
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.mynotesapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
-import com.dicoding.mynotesapp.db.NoteHelper
-import com.dicoding.mynotesapp.helper.MappingHelper
-import com.dicoding.mynotesapp.note.Note
+import com.dicoding.consumerapp.db.DatabaseContract.NoteColumns.Companion.CONTENT_URI
+import com.dicoding.consumerapp.helper.MappingHelper
+import com.dicoding.consumerapp.note.Note
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +20,6 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: NoteAdapter
-    private lateinit var noteHelper: NoteHelper
 
     companion object {
         private const val EXTRA_STATE = "EXTRA_STATE"
@@ -32,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportActionBar?.title = "Notes"
+        supportActionBar?.title = "Consumer Notes"
         rv_notes.layoutManager = LinearLayoutManager(this)
         rv_notes.setHasFixedSize(true)
         adapter = NoteAdapter(this)

@@ -1,4 +1,4 @@
-package com.dicoding.mynotesapp.db
+package com.dicoding.consumerapp.db
 
 import android.net.Uri
 import android.provider.BaseColumns
@@ -16,7 +16,7 @@ object DatabaseContract {
             const val DESCRIPTION = "description"
             const val DATE = "date"
 
-            val CONTENT_URI = Uri.Builder().scheme(SCHEME)
+            val CONTENT_URI: Uri = Uri.Builder().scheme(SCHEME)
                 .authority(AUTHORITY)
                 .appendPath(TABLE_NAME)
                 .build()
